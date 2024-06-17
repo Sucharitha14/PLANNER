@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&family=Nunito:wght@300&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #A2D2FF; /* Soft Blue background */
+      color: #333333; /* Dark Gray text color */
+      font-family: 'Nunito', sans-serif; /* Friendly and modern font */
+    }
+    .jumbotron {
+      background-color: #FFC8DD; /* Light Pink for jumbotron */
+      padding: 40px 30px;
+      margin-bottom: 0;
+      border-radius: 15px;
+      color: #333333; /* Dark Gray text */
+	font-family: 'Patrick Hand SC', cursive; /* Handwritten font */
+    }
+    .navbar {
+      background-color: #FFFFD1; /* Soft Yellow for navbar */
+      border-bottom: 2px solid #9CC5A1; /* Soft Green border */
+    }
+    .navbar-brand, .navbar-nav .nav-link {
+      color: #333333; /* Dark Gray text */
+      font-family: 'Patrick Hand SC', cursive; /* Handwritten font */
+    }
+    .navbar-brand:hover, .navbar-nav .nav-link:hover {
+      color: #9CC5A1; /* Soft Green on hover */
+    }
+    .sidebar {
+      background-color: #FFFFD1; /* Soft Yellow sidebar */
+      padding: 20px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      border-right: 2px solid #9CC5A1; /* Soft Green border */
+    }
+    .sidebar .navbar-brand, .sidebar .nav-link {
+      color: #333333; /* Dark Gray text */
+    }
+    .sidebar .nav-link:hover {
+      color: #CF1354; /* Soft Magenta on hover */
+    }
+    .content {
+      margin-left: 240px;
+      padding: 20px;
+      color: #333333; /* Dark Gray text color */
+    }
+    .planner-table {
+      width: 100%;
+      margin-bottom: 20px;
+      border: 2px solid #9CC5A1; /* Soft Green border */
+    }
+    .planner-table th, .planner-table td {
+      text-align: center;
+      vertical-align: middle;
+      background-color: #FFC8DD; /* Light Pink for table cells */
+      font-family: 'Nunito', sans-serif; /* Nunito font for table cells */
+    }
+    .add-agenda-btn {
+      margin: 20px 0;
+      background-color: #9CC5A1; /* Soft Green for button */
+      border-color: #9CC5A1; /* Soft Green border */
+      color: #FFFFFF; /* White text */
+      font-family: 'Nunito', sans-serif; /* Nunito font for button */
+    }
+    .add-agenda-btn:hover {
+      background-color: #CF1354; /* Soft Magenta on hover */
+      border-color: #CF1354; /* Soft Magenta border on hover */
+    }
+    .delete-btn {
+      cursor: pointer;
+      color: #CF1354; /* Soft Magenta for delete button */
+      font-family: 'Nunito', sans-serif; /* Nunito font for delete button */
+    }
+    .delete-btn:hover {
+      color: #FFC8DD; /* Light Pink on hover */
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+   <div class="sidebar">
+    <a class="navbar-brand" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/try.html">Study Planner</a>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Agenda%20Section.html">Agenda</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Tasks.html">Task</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Goals.html">Goals</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Notifiation.html">Notifications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Search.html#search">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Profile.html">Profile</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main content -->
+  <div class="content">
+    <!-- Agenda Section -->
+    <div id="agenda">
+      <div class="jumbotron text-center">
+        <h2>Weekly Planner</h2>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered planner-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+              <th>Saturday</th>
+              <th>Sunday</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="planner-body">
+            <!-- Rows will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-primary add-agenda-btn" data-toggle="modal" data-target="#addAgendaModal">Add New Agenda</button>
+    </div>
+
+    <!-- Add Agenda Modal -->
+    <div class="modal fade" id="addAgendaModal" tabindex="-1" aria-labelledby="addAgendaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addAgendaModalLabel">Add New Agenda</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="agenda-form">
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" class="form-control" id="subject" required>
+              </div>
+              <div class="form-group">
+                <label for="day">Day</label>
+                <select class="form-control" id="day" required>
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                  <option value="Sunday">Sunday</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="start-time">Start Time</label>
+                <input type="time" class="form-control" id="start-time" required>
+              </div>
+              <div class="form-group">
+                <label for="duration-hours">Duration (Hours)</label>
+                <input type="number" class="form-control" id="duration-hours" required>
+              </div>
+              <div class="form-group">
+                <label for="duration-minutes">Duration (Minutes)</label>
+                <input type="number" class="form-control" id="duration-minutes" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Add Agenda</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      // Load agendas from localStorage
+      loadAgendas();
+
+      document.getElementById('agenda-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const subject = document.getElementById('subject').value;
+        const day = document.getElementById('day').value;
+        const startTime = document.getElementById('start-time').value;
+        const durationHours = parseInt(document.getElementById('duration-hours').value, 10);
+        const durationMinutes = parseInt(document.getElementById('duration-minutes').value, 10);
+
+        const endTime = calculateEndTime(startTime, durationHours, durationMinutes);
+
+        const newAgenda = {
+          id: Date.now(), // Unique ID based on current timestamp
+          subject,
+          day,
+          startTime,
+          endTime
+        };
+
+        saveAgenda(newAgenda);
+        addAgendaToTable(newAgenda);
+        $('#addAgendaModal').modal('hide');
+      });
+    });
+
+    function loadAgendas() {
+      const agendas = JSON.parse(localStorage.getItem('agendas')) || [];
+      agendas.forEach(addAgendaToTable);
+    }
+
+    function saveAgenda(agenda) {
+      const agendas = JSON.parse(localStorage.getItem('agendas')) || [];
+      agendas.push(agenda);
+      localStorage.setItem('agendas', JSON.stringify(agendas));
+    }
+
+    function deleteAgenda(id) {
+      let agendas = JSON.parse(localStorage.getItem('agendas')) || [];
+      agendas = agendas.filter(agenda => agenda.id !== id);
+      localStorage.setItem('agendas', JSON.stringify(agendas));
+      document.getElementById(`agenda-${id}`).remove();
+    }
+
+    function calculateEndTime(startTime, hours, minutes) {
+      const [startHour, startMinute] = startTime.split(':').map(Number);
+      let endHour = startHour + hours;
+      let endMinute = startMinute + minutes;
+
+      if (endMinute >= 60) {
+        endHour += Math.floor(endMinute / 60);
+        endMinute = endMinute % 60;
+      }
+
+      if (endHour >= 24) {
+        endHour = endHour % 24;
+      }
+
+      const formattedEndHour = String(endHour).padStart(2, '0');
+      const formattedEndMinute = String(endMinute).padStart(2, '0');
+
+      return `${formattedEndHour}:${formattedEndMinute}`;
+    }
+
+    function addAgendaToTable(agenda) {
+      const { id, subject, day, startTime, endTime } = agenda;
+      let existingRow = Array.from(document.getElementById('planner-body').children)
+        .find(row => row.children[0].textContent === `${startTime} - ${endTime}`);
+      
+      if (!existingRow) {
+        existingRow = document.createElement('tr');
+        existingRow.id = `agenda-${id}`;
+
+        // Add time column
+        existingRow.innerHTML = `<td>${startTime} - ${endTime}</td>`;
+
+        // Initialize the columns for each day of the week
+        const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        daysOfWeek.forEach(dayName => {
+          if (day === dayName) {
+            existingRow.innerHTML += `<td>${subject}</td>`;
+          } else {
+            existingRow.innerHTML += `<td></td>`;
+          }
+        });
+
+        // Add delete button column
+        existingRow.innerHTML += `<td><span class="delete-btn" onclick="deleteAgenda(${id})">&times;</span></td>`;
+
+        // Append the new row to the table body
+        document.getElementById('planner-body').appendChild(existingRow);
+      } else {
+        const dayIndex = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].indexOf(day) + 1;
+        existingRow.children[dayIndex].textContent = subject;
+      }
+    }
+  </script>
+</body>
+</html>
+

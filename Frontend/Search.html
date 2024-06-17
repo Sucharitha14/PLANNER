@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search</title>
+   <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&family=Nunito:wght@300&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    /* Add your custom styles here */
+    body {
+      background-color: #A2D2FF; /* Soft Blue background */
+      color: #333333; /* Dark Gray text color */
+      font-family: 'Nunito', sans-serif; /* Friendly and modern font */
+    }
+    .jumbotron {
+      background-color: #FFC8DD; /* Light Pink for jumbotron */
+      padding: 40px 30px;
+      margin-bottom: 0;
+      border-radius: 15px;
+      color: #333333; /* Dark Gray text */
+    }
+    .navbar {
+      background-color: #FFFFD1; /* Soft Yellow for navbar */
+      border-bottom: 2px solid #9CC5A1; /* Soft Green border */
+    }
+    .navbar-brand, .navbar-nav .nav-link {
+      color: #333333; /* Dark Gray text */
+      font-family: 'Patrick Hand SC', cursive; /* Handwritten font */
+    }
+    .navbar-brand:hover, .navbar-nav .nav-link:hover {
+      color: #9CC5A1; /* Soft Green on hover */
+    }
+    .sidebar {
+      background-color: #FFFFD1; /* Soft Yellow sidebar */
+      padding: 20px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      border-right: 2px solid #9CC5A1; /* Soft Green border */
+    }
+    .sidebar .navbar-brand, .sidebar .nav-link {
+      color: #333333; /* Dark Gray text */
+    }
+    .sidebar .nav-link:hover {
+      color: #CF1354; /* Soft Magenta on hover */
+    }
+    .content {
+      margin-left: 240px;
+      padding: 20px;
+      color: #333333; /* Dark Gray text color */
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+ <a class="navbar-brand" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/try.html">Study Planner</a>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Agenda%20Section.html">Agenda</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Tasks.html">Task</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Goals.html">Goals</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Notifiation.html">Notifications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Search.html#search">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Profile.html">Profile</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main content -->
+  <div class="content">
+   
+    <!-- Search Section -->
+    <div id="search" class="search-section">
+      <h2>Search</h2>
+      <form id="search-form">
+        <div class="form-group">
+          <label for="search-keywords">Search by Words</label>
+          <input type="text" class="form-control" id="search-keywords" placeholder="Enter keywords">
+        </div>
+        <div class="form-group">
+          <label for="search-year">Search by Year</label>
+          <input type="number" class="form-control" id="search-year" placeholder="Enter year">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <div class="search-results mt-4">
+        <!-- Search results will be dynamically added here -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.getElementById('search-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const keywords = document.getElementById('search-keywords').value.trim().toLowerCase();
+        const year = document.getElementById('search-year').value.trim();
+
+        // Perform search based on keywords and/or year
+        searchItems(keywords, year);
+      });
+    });
+
+    function searchItems(keywords, year) {
+      // For demonstration, you can implement your search logic here
+      // Replace with your actual search implementation (e.g., querying a database)
+      const results = [];
+
+      // Example of results
+      const exampleResults = [
+        { id: 1, title: 'Example Task 1', description: 'Description of Example Task 1', year: 2024 },
+        { id: 2, title: 'Example Task 2', description: 'Description of Example Task 2', year: 2023 },
+        { id: 3, title: 'Example Task 3', description: 'Description of Example Task 3', year: 2024 }
+      ];
+
+      // Filter based on keywords and/or year
+      if (keywords !== '') {
+        results.push(...exampleResults.filter(item => item.title.toLowerCase().includes(keywords) || item.description.toLowerCase().includes(keywords)));
+      }
+
+      if (year !== '') {
+        results.push(...exampleResults.filter(item => item.year.toString() === year));
+      }
+
+      displaySearchResults(results);
+    }
+
+    function displaySearchResults(results) {
+      const searchResultsDiv = document.querySelector('.search-results');
+      searchResultsDiv.innerHTML = '';
+
+      if (results.length === 0) {
+        searchResultsDiv.innerHTML = '<p>No results found.</p>';
+      } else {
+        results.forEach(result => {
+          const resultItem = document.createElement('div');
+          resultItem.className = 'card mb-2';
+          resultItem.innerHTML = `
+            <div class="card-body">
+              <h5 class="card-title">${result.title}</h5>
+              <p class="card-text">${result.description}</p>
+              <p class="card-text"><strong>Year:</strong> ${result.year}</p>
+            </div>
+          `;
+          searchResultsDiv.appendChild(resultItem);
+        });
+      }
+    }
+  </script>
+</body>
+</html>

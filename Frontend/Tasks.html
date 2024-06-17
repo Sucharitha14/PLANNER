@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&family=Nunito:wght@300&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+   body {
+      background-color: #A2D2FF; /* Soft Blue background */
+      color: #333333; /* Dark Gray text color */
+      font-family: 'Nunito', sans-serif; /* Friendly and modern font */
+    }
+    .jumbotron {
+      background-color: #FFC8DD; /* Light Pink for jumbotron */
+      padding: 40px 30px;
+      margin-bottom: 0;
+      border-radius: 15px;
+      color: #333333; /* Dark Gray text */
+    }
+    .navbar {
+      background-color: #FFFFD1; /* Soft Yellow for navbar */
+      border-bottom: 2px solid #9CC5A1; /* Soft Green border */
+    }
+    .navbar-brand, .navbar-nav .nav-link {
+      color: #333333; /* Dark Gray text */
+      font-family: 'Patrick Hand SC', cursive; /* Handwritten font */
+    }
+    .navbar-brand:hover, .navbar-nav .nav-link:hover {
+      color: #9CC5A1; /* Soft Green on hover */
+    }
+    .sidebar {
+      background-color: #FFFFD1; /* Soft Yellow sidebar */
+      padding: 20px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      border-right: 2px solid #9CC5A1; /* Soft Green border */
+    }
+    .sidebar .navbar-brand, .sidebar .nav-link {
+      color: #333333; /* Dark Gray text */
+    }
+    .sidebar .nav-link:hover {
+      color: #CF1354; /* Soft Magenta on hover */
+    }
+    .content {
+      margin-left: 240px;
+      padding: 20px;
+      color: #333333; /* Dark Gray text color */
+    }
+    .task-section {
+      margin-top: 20px;
+    }
+    .task-filter {
+      margin-bottom: 20px;
+    font-family: 'Patrick Hand SC', cursive; /* Handwritten font */
+    }
+    .task-list {
+      margin-top: 20px;
+    }
+    .btn-primary{
+      background-color: #9CC5A1; /* Soft Green for button */
+      border-color: #9CC5A1; /* Soft Green border */
+      color: #FFFFFF; /* White text */
+      font-family: 'Nunito', sans-serif; /* Nunito font for button */
+    }
+    .btn-primary:hover {
+      background-color: #CF1354; /* Soft Magenta on hover */
+      border-color: #CF1354; /* Soft Magenta border on hover */
+    }
+
+    .btn-danger, .btn-danger:hover {
+      background-color: #cf1354; /* Soft Magenta background */
+      border-color: #cf1354; /* Soft Magenta border */
+      color: #ffffff; /* White text color */
+    }
+    .list-group-item {
+      background-color: #ffc8dd; /* Light Pink background for list items */
+      border-color: #9cc5a1; /* Soft Green border */
+    }
+    .list-group-item:hover {
+      background-color: #ffcac8; /* Light Broownish Red sidebar on hover */
+    font-family: 'Patrick Hand SC', cursive; /* Handwritten font */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a class="navbar-brand" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/try.html">Study Planner</a>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Agenda%20Section.html">Agenda</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Tasks.html">Task</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Goals.html">Goals</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Notifiation.html">Notifications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Search.html#search">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Profile.html">Profile</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main content -->
+  <div class="content">
+   
+   <!-- Task Section -->
+    <div id="task" class="task-section">
+      <h2>Tasks</h2>
+      <div class="task-filter">
+        <div class="form-row">
+          <div class="col">
+            <select class="form-control" id="filter-subject">
+              <option value="">All Subjects</option>
+              <!-- Subjects will be added dynamically -->
+            </select>
+          </div>
+          <div class="col">
+            <select class="form-control" id="filter-year">
+              <option value="">All Years</option>
+              <!-- Years options will be added dynamically -->
+            </select>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#addTaskModal">Add New Task</button>
+      <div class="task-list">
+        <ul class="list-group" id="task-list">
+          <!-- Tasks will be dynamically added here -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addTaskModalLabel">Add New Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="task-form">
+              <div class="form-group">
+                <label for="task-subject">Subject</label>
+                <input type="text" class="form-control" id="task-subject" required>
+              </div>
+              <div class="form-group">
+                <label for="task-year">Year</label>
+                <input type="number" class="form-control" id="task-year" value="2024" required>
+              </div>
+              <div class="form-group">
+                <label for="task-detail">Task Detail</label>
+                <textarea class="form-control" id="task-detail" rows="3" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Add Task</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      // Load tasks from localStorage
+      loadTasks();
+
+      document.getElementById('task-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const subject = document.getElementById('task-subject').value;
+        const year = document.getElementById('task-year').value;
+        const detail = document.getElementById('task-detail').value;
+
+        const newTask = {
+          id: Date.now(), // Unique ID for each task
+          subject,
+          year,
+          detail
+        };
+
+        saveTask(newTask);
+        addTaskToList(newTask);
+        $('#addTaskModal').modal('hide');
+        this.reset();
+      });
+
+      document.getElementById('filter-subject').addEventListener('change', filterTasks);
+      document.getElementById('filter-year').addEventListener('change', filterTasks);
+    });
+
+    function loadTasks() {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.forEach(addTaskToList);
+      populateSubjects(tasks);
+      populateYears(tasks);
+    }
+
+    function saveTask(task) {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.push(task);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+    function deleteTask(id) {
+      let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks = tasks.filter(task => task.id !== id);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      document.getElementById(`task-${id}`).remove();
+    }
+
+    function addTaskToList(task) {
+      const { id, subject, year, detail } = task;
+      const taskItem = document.createElement('li');
+      taskItem.className = 'list-group-item';
+      taskItem.id = `task-${id}`;
+      taskItem.innerHTML = `
+        <div>
+          <strong>${subject} (${year})</strong>
+          <p>${detail}</p>
+          <button class="btn btn-danger btn-sm float-right" onclick="deleteTask(${id})">Delete</button>
+        </div>
+      `;
+      document.getElementById('task-list').appendChild(taskItem);
+    }
+
+    function filterTasks() {
+      const subjectFilter = document.getElementById('filter-subject').value.toLowerCase();
+      const yearFilter = document.getElementById('filter-year').value;
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+      document.getElementById('task-list').innerHTML = '';
+
+      const filteredTasks = tasks.filter(task => {
+        const matchesSubject = subjectFilter === '' || task.subject.toLowerCase().includes(subjectFilter);
+        const matchesYear = yearFilter === '' || task.year == yearFilter;
+        return matchesSubject && matchesYear;
+      });
+
+      filteredTasks.forEach(addTaskToList);
+    }
+
+    function populateSubjects(tasks) {
+      const subjects = new Set(tasks.map(task => task.subject));
+      const filterSubjectSelect = document.getElementById('filter-subject');
+      subjects.forEach(subject => {
+        const option = document.createElement('option');
+        option.value = subject.toLowerCase();
+        option.textContent = subject;
+        filterSubjectSelect.appendChild(option);
+      });
+    }
+
+    function populateYears(tasks) {
+      const years = new Set(tasks.map(task => task.year));
+      const filterYearSelect = document.getElementById('filter-year');
+      years.forEach(year => {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year;
+        filterYearSelect.appendChild(option);
+      });
+    }
+  </script>
+</body>
+</html>

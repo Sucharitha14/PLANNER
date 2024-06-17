@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Planner</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&family=Nunito:wght@300&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #A2D2FF;
+      color: #333333;
+      font-family: 'Nunito', sans-serif;
+    }
+    .jumbotron {
+      background-color: #FFC8DD;
+      padding: 40px 30px;
+      margin-bottom: 0;
+      border-radius: 15px;
+      color: #333333;
+    }
+    .navbar {
+      background-color: #FFFFD1;
+      border-bottom: 2px solid #9CC5A1;
+    }
+    .navbar-brand, .navbar-nav .nav-link {
+      color: #333333;
+      font-family: 'Patrick Hand SC', cursive;
+    }
+    .navbar-brand:hover, .navbar-nav .nav-link:hover {
+      color: #9CC5A1;
+    }
+    .sidebar {
+      background-color: #FFFFD1;
+      padding: 20px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      border-right: 2px solid #9CC5A1;
+    }
+    .sidebar .navbar-brand, .sidebar .nav-link {
+      color: #333333;
+    }
+    .sidebar .nav-link:hover {
+      color: #CF1354;
+    }
+    .content {
+      margin-left: 240px;
+      padding: 20px;
+      color: #333333;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a class="navbar-brand" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/try.html">Study Planner</a>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Agenda%20Section.html">Agenda</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Tasks.html">Task</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Goals.html">Goals</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Notifiation.html">Notifications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Search.html#search">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="file:///D:/Suchu/Sem%206/Project%20Final%20Sem/Degree/Profile.html">Profile</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main content -->
+  <div class="content">
+    <!-- Profile Section -->
+    <div id="profile" class="profile-section">
+      <h2>Profile</h2>
+      <form id="profile-form">
+        <div class="form-group">
+          <label for="profile-picture">Profile Picture</label>
+          <input type="file" class="form-control-file" id="profile-picture">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="first-name">First Name</label>
+            <input type="text" class="form-control" id="first-name" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="last-name">Last Name</label>
+            <input type="text" class="form-control" id="last-name" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="country">Country</label>
+            <input type="text" class="form-control" id="country">
+          </div>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="newsletter">
+          <label class="form-check-label" for="newsletter">Subscribe to Newsletter</label>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Save Profile</button>
+      </form>
+    </div>
+
+    <!-- Legal Section -->
+    <div id="legal" class="legal-section">
+      <h2>About Us: Legal</h2>
+      <p>Through continued use of My Study Life you agree to our privacy policy and terms of service which can be found on our website.</p>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+
+    <!-- Support + Feedback Section -->
+    <div id="support" class="support-section">
+      <h2>Support + Feedback</h2>
+      <p>If you have spotted a bug, found something that needs improving or would simply like to request a feature please get in touch.</p>
+      <ul>
+        <li><a href="#">Request Support</a></li>
+        <li><a href="#">Send Feedback</a></li>
+      </ul>
+      <p>About XYZ Version 5.1.94</p>
+      <p>© Copyright 2024 XYZ Ltd</p>
+    </div>
+
+    <!-- Delete My Account Section -->
+    <div id="delete-account" class="delete-account-section">
+      <h2>Delete My Account</h2>
+      <p>To delete your account, please type <strong>Delete</strong> and confirm:</p>
+      <form id="delete-account-form">
+        <div class="form-group">
+          <input type="text" class="form-control" id="delete-confirm" placeholder="Type 'Delete'">
+        </div>
+        <button type="submit" class="btn btn-danger">Delete Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const profileForm = document.getElementById('profile-form');
+      const deleteAccountForm = document.getElementById('delete-account-form');
+
+      profileForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Implement saving profile functionality here
+        alert('Profile saved!');
+      });
+
+      deleteAccountForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const confirmation = document.getElementById('delete-confirm').value.trim().toLowerCase();
+        if (confirmation === 'delete') {
+          // Implement account deletion logic here
+          alert('Account deleted successfully.');
+        } else {
+          alert('Please type "Delete" to confirm account deletion.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
